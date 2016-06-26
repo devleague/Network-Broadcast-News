@@ -5,17 +5,17 @@ var CONFIG = require('./config');
 var socket = new net.Socket();
 
 var client = socket.connect({ port: CONFIG.PORT }, function() {
-  console.log("YOU'RE IN THE SERVER!!!!!");
-  client.write(" world :)");
+  console.log("You are logged in:)");
+  client.write("\nMessage from client: 'World :)'");
 
   //client.end();
   client.on('data', function(data) {
-    console.log("Receiving informationnn:O");
+    console.log("\nReceiving from server: ");
     console.log(data.toString());
     //client.end();
   });
 
   client.on('end', function() {
-    console.log("Logged off:)");
+    console.log("You have logged off:)");
   });
 });
