@@ -6,6 +6,14 @@ var CONFIG = require('./config');
 var server = net.createServer(function (socket) {
   //Connection listener
   console.log("SOMEONE'S INSIDE:O :O ");
+
+  socket.on('end', function() {
+    console.log("THEY'RE GONE");
+  });
+
+  socket.write("hi");
+  socket.pipe(socket);
+
 });
 
 server.listen(CONFIG.PORT, function () {

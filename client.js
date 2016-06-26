@@ -6,7 +6,7 @@ var socket = new net.Socket();
 
 var client = socket.connect({ port: CONFIG.PORT }, function() {
   console.log("YOU'RE IN THE SERVER!!!!!");
-
+  client.end();
 });
 
 client.on('end', function() {
