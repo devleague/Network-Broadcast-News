@@ -11,7 +11,13 @@ var server = net.createServer(function (socket) {
     console.log("THEY'RE GONE");
   });
 
-  socket.write("hi");
+  socket.on('data', function(data) {
+    console.log("Receiving informationnn:O");
+    console.log(data.toString());
+    //client.end();
+  });
+
+  socket.write("Hello");
   socket.pipe(socket);
 
 });
