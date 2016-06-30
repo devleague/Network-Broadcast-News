@@ -14,8 +14,21 @@ var server = net.createServer(function(socket){
     socket.write('Please enter username \n', 'utf8');
     socket.on('data', function(chunk){
       if(connections.length > userCount){
-        connections[userCount].userName = chunk;
-        userCount++;
+        var validName = 1;
+          if(chunk.toString() === '[ADMIN]\n'){
+            validName = 0;
+            socket.write('Not allowed to set username as admin \n', 'utf8');
+          }
+        for(var k = 0; k < userCount; k++){
+          if(chunk.toString() === connections[k].userName.toString()){
+            validName = 0;
+            socket.write('Username is already taken \n', 'utf8');
+          }
+        }
+        if(validName === 1){
+          connections[userCount].userName = chunk;
+          userCount++;
+        }
       }
       else{
         var senderName;
