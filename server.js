@@ -2,24 +2,36 @@ var net = require('net');
 
 var CONFIG = require('./config');
 
+var listOfClients = [];
+
 //Connection listener
 var server = net.createServer(function (socket) {
   //Connection listener
-  console.log("CONNECTED: " + CONFIG.PORT);
+  var clientAddress = socket.remoteAddress.slice(7);
+  var clientPort = socket.remotePort;
+  listOfClients.push(socket);
+
+  console.log("CONNECTED: " + clientAddress + ":" + clientPort);
 
   socket.on('end', function() {
-    console.log("\nCLOSED: " + CONFIG.PORT);
+    console.log("CLOSED: " + clientAddress + clientPort);
   });
 
-  socket.pipe(socket);
-
   process.stdin.on('data', function(data) {
-    socket.write("HOST: " + data);
+    socket.write("[ADMIN]" + ' "' + data + '"');
+    // if(socket.write() === "kick") {
+    //   socket.end();
+    // }
   });
 
   socket.on('data', function(data) {
-    console.log(data.toString());
+    console.log("SERVER BCAST FROM " + data);
+
+    listOfClients.forEach(function(client) {
+      client.write(data);
+    });
   });
+  //socket.pipe(socket);
 });
 
 server.listen(CONFIG.PORT, function () {
