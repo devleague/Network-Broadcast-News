@@ -50,7 +50,7 @@ var server = net.createServer(function(socket){
           closedPort = connections[z].socket.remotePort;
           b.write('Closed ' + connections[z].socket.remotePort + '\n');
           connections.splice(z, 1);
-
+          userCount--;
         }
       }
       for(var x = 0; x < connections.length;x++){
@@ -61,10 +61,38 @@ var server = net.createServer(function(socket){
 
 
 a.on('data', function(chunk){
-  for(var i = 0; i < connections.length; i++){
-    connections[i].write( '[ADMIN]' + ': '  + chunk + '\n','utf8');
+  var myRegexp = /(\\kick) (.*)/;
+  var match = myRegexp.exec(chunk);
+  if(match !== null){
+      if(match.length === 3){
+      for(var k = 0; k < connections.length; k++){
+        if(isNaN(match[2])){
+          var checkName = connections[k].userName.toString().replace(/(\r\n|\n|\r)/gm,"");
+          console.log(match[2]);
+          if(match[2].toString() === checkName){
+            console.log('User got kicked');
+            connections[k].socket.end();
+            connections.splice(k,1);
+            userCount--;
+          }
+        }
+        else{
+          if(parseInt(match[2]) === connections[k].socket.remotePort){
+            console.log('User got kicked');
+            connections[k].socket.end();
+            connections.splice(k,1);
+            userCount--;
+          }
+        }
+      }
+    }
   }
-  b.write(chunk);
+  else{
+    for(var i = 0; i < connections.length; i++){
+      connections[i].socket.write('[ADMIN]' + ': '  + chunk + '\n','utf8');
+    }
+    b.write('[ADMIN]' + ': '  + chunk);
+  }
 });
 
 server.listen(CONFIG.PORT, function(){
