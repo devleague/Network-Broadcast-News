@@ -24,7 +24,7 @@ var server = net.createServer(function(socket){
       for(var z = 0; z < connections.length; z++){
         if(connections[z].remotePort === socket.remotePort){
           closedPort = connections[z].remotePort;
-          b.write('Closed' + connections[z].remotePort + '\n');
+          b.write('Closed ' + connections[z].remotePort + '\n');
           connections.splice(z, 1);
         }
       }
@@ -35,6 +35,12 @@ var server = net.createServer(function(socket){
 });
 
 
+a.on('data', function(chunk){
+  for(var i = 0; i < connections.length; i++){
+    connections[i].write( '[ADMIN]' + ': '  + chunk + '\n','utf8');
+  }
+  b.write(chunk);
+});
 
 server.listen(CONFIG.PORT, function(){
   var finalPort = server.address().port;
