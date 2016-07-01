@@ -14,7 +14,18 @@ socket.connect({port:CONFIG.PORT});
 
 
 a.on('data', function(chunk){
-  socket.write(chunk,'utf8');
+  var myRegexp = /(\\flood) (\w*)/;
+  var match = myRegexp.exec(chunk);
+  if(match !== null){
+    console.log('hello');
+    if(match.length === 3){
+      for(var i = 0; i < 99; i++)
+        socket.write(match[2],'utf8');
+    }
+  }
+  else{
+    socket.write(chunk,'utf8');
+  }
 });
 
 

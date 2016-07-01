@@ -58,6 +58,7 @@ var server = net.createServer(function(socket){
             else{
               socket.startMessage = new Date();
               socket.writeLimit = 3;
+              socket.totalTIme = 0;
             }
           }
           if(isSpam === 0){
