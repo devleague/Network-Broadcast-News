@@ -7,11 +7,18 @@ var CONFIG = require('./config');
 var PORT = 6969;
 var connections = [];
 var userCount = 0;
+
+
+
 var server = net.createServer(function(socket){
     b.write( socket.remoteAddress + ': ' + socket.remotePort + ' connected \n');
-    connections.push({socket:socket, userName:''});
+    connections.push({socket:socket, userName:'', writeLimit: 3});
     socket.write('Connected to ' + CONFIG.PORT + '\n', 'utf8');
     socket.write('Please enter username \n', 'utf8');
+    socket.writeLimit = 3;
+    socket.startMessage = null;
+    socket.endMessage = null;
+    socket.totalTime = 0;
     socket.on('data', function(chunk){
       if(connections.length > userCount){
         var validName = 1;
@@ -31,14 +38,41 @@ var server = net.createServer(function(socket){
         }
       }
       else{
-        var senderName;
-        for(var y = 0; y < connections.length; y++){
-          if(connections[y].socket.remotePort === socket.remotePort)
-            senderName = connections[y].userName.toString().replace(/(\r\n|\n|\r)/gm,"");
-        }
-      b.write('Server Bcast from'  + socket.remoteAddress + ': ' + socket.remotePort +  ': ' + chunk + '\n','utf8');
-        for(var i = 0; i < connections.length; i++){
-          connections[i].socket.write( senderName + ': '  + chunk + '\n','utf8');
+          var isSpam = 0;
+          if(socket.writeLimit === 3){
+            socket.startMessage = new Date();
+          }
+          socket.writeLimit--;
+          if(socket.writeLimit < 0){
+            if(socket.totalTime < 1000){
+              for(var t  = 0; t < connections.length; t++){
+                if(connections[t].socket.remotePort === socket.remotePort){
+                  console.log('Someone got kicked');
+                  connections.splice(t, 1);
+                  userCount--;
+                  socket.end();
+                  isSpam = 1;
+                }
+              }
+            }
+            else{
+              socket.startMessage = new Date();
+              socket.writeLimit = 3;
+            }
+          }
+          if(isSpam === 0){
+          var senderName;
+          for(var y = 0; y < connections.length; y++){
+            if(connections[y].socket.remotePort === socket.remotePort)
+              senderName = connections[y].userName.toString().replace(/(\r\n|\n|\r)/gm,"");
+          }
+          b.write('Server Bcast from'  + socket.remoteAddress + ': ' + socket.remotePort +  ': ' + chunk + '\n','utf8');
+          for(var i = 0; i < connections.length; i++){
+            connections[i].socket.write( senderName + ': '  + chunk + '\n','utf8');
+          }
+          socket.endMessage = new Date();
+          var spamTime = socket.endMessage.getTime() - socket.startMessage.getTime();
+          socket.totalTime += spamTime;
         }
       }
     });
