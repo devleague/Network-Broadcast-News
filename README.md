@@ -3,8 +3,8 @@ A NodeJS broadcast server for the largest media conglomerate in the world
 
 slides
 
-https://slides.com/theremix/events-and-emitters  
-https://slides.com/theremix/nodejs-streams  
+https://slides.com/theremix/events-and-emitters
+https://slides.com/theremix/nodejs-streams
 
 
 ## Goals
@@ -31,9 +31,9 @@ Whenever the connected socket (client) emits a 'data' event, then data is being 
 
 ### Additional Features
 
-1. add username registration  
+1. add username registration
    once connected, the new client will be prompted to enter a username, store the username and then allow them to broadcast messages with all messages prepended with their username.
-1. add admin broadcast  
+1. add admin broadcast
    the admin (server.js) can broadcast messages and each message will be prepended with `[ADMIN]`
 1. prevent users to set their name as `[ADMIN]` or any other user's name
 1. [bonus] admin can enter a command to kick a client `\kick username` and `kick ip:port` will both disconnect the client

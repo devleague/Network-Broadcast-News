@@ -1,0 +1,20 @@
+{
+  "name": "network-broadcast-news",
+  "version": "1.0.0",
+  "description": "A NodeJS broadcast server for the largest media conglomerate in the world",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marunoa/Network-Broadcast-News.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marunoa/Network-Broadcast-News/issues"
+  },
+  "homepage": "https://github.com/marunoa/Network-Broadcast-News#readme"
+}
