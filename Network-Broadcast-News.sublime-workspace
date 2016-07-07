@@ -1,0 +1,660 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ap",
+				"api"
+			],
+			[
+				"get",
+				"get_the_app"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"ti",
+				"tickHandler"
+			],
+			[
+				"em",
+				"emitter"
+			],
+			[
+				"jso",
+				"jsonData"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"cre",
+				"createElement"
+			],
+			[
+				"j",
+				"jsonData"
+			],
+			[
+				"json",
+				"json"
+			],
+			[
+				"onc",
+				"onclick	Attr"
+			],
+			[
+				"t",
+				"type	Attr"
+			],
+			[
+				"i",
+				"innerHTML"
+			],
+			[
+				"re",
+				"reddit"
+			],
+			[
+				"par",
+				"parsing"
+			],
+			[
+				"http",
+				"httpRequest"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"htt",
+				"httpRequest"
+			],
+			[
+				"onkey",
+				"onkeydown	Attr"
+			],
+			[
+				"text",
+				"textMessages"
+			],
+			[
+				"cou",
+				"countDisplay"
+			],
+			[
+				"gene",
+				"generateText"
+			],
+			[
+				"max",
+				"maxlength	Attr"
+			],
+			[
+				"te",
+				"textarea"
+			],
+			[
+				"tex",
+				"text1"
+			],
+			[
+				"key",
+				"keyUp"
+			],
+			[
+				"set",
+				"setInterval"
+			],
+			[
+				"tim",
+				"timeOut3"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"a",
+				"addAttributes"
+			],
+			[
+				"co",
+				"column"
+			],
+			[
+				"r",
+				"row"
+			],
+			[
+				"create",
+				"createGrid"
+			],
+			[
+				"crea",
+				"createGrid"
+			],
+			[
+				"grid",
+				"gridElement"
+			],
+			[
+				"gri",
+				"gridElement"
+			],
+			[
+				"app",
+				"appendChild"
+			],
+			[
+				"row",
+				"rowZ"
+			],
+			[
+				"ro",
+				"rowZ"
+			],
+			[
+				"D",
+				"DamageSpell"
+			],
+			[
+				"p",
+				"previousNode"
+			],
+			[
+				"insert",
+				"insertedNode"
+			],
+			[
+				"new",
+				"newNode"
+			],
+			[
+				"nex",
+				"nextNode"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"l",
+				"linkedListGenerator"
+			],
+			[
+				"de",
+				"deletedNode"
+			],
+			[
+				"no",
+				"nodeToDelete"
+			],
+			[
+				"current",
+				"currentNode"
+			],
+			[
+				"cu",
+				"currentNode"
+			],
+			[
+				"N",
+				"NaN"
+			],
+			[
+				"calc",
+				"calculatorModule"
+			],
+			[
+				"ge",
+				"getTotal"
+			],
+			[
+				"s",
+				"scrambledWords"
+			],
+			[
+				"ord",
+				"orderQueue"
+			],
+			[
+				"br",
+				"brown"
+			],
+			[
+				"brow",
+				"brownOnly"
+			],
+			[
+				"u",
+				"upToTen"
+			],
+			[
+				"mi",
+				"mixedWords"
+			],
+			[
+				"mixed",
+				"mixedNums"
+			],
+			[
+				"sa",
+				"stateSums"
+			],
+			[
+				"state",
+				"stateSums"
+			],
+			[
+				"eve",
+				"everyStates"
+			],
+			[
+				"sumO",
+				"sumOfHighInterests"
+			],
+			[
+				"array",
+				"arrayAccounts"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"ba",
+				"bankBalances"
+			],
+			[
+				"b",
+				"bankBalances"
+			],
+			[
+				"se",
+				"searchedIndex"
+			],
+			[
+				"fi",
+				"fillArrayWith"
+			],
+			[
+				"d",
+				"dropFirstElement"
+			],
+			[
+				"dr",
+				"dropLastElement"
+			],
+			[
+				"fir",
+				"firstElementDrop"
+			],
+			[
+				"v",
+				"valuesToExclude"
+			],
+			[
+				"e",
+				"elementToDrop"
+			],
+			[
+				"drop",
+				"dropElement"
+			],
+			[
+				"c",
+				"chunkLength"
+			],
+			[
+				"chun",
+				"chunkLength"
+			],
+			[
+				"A",
+				"arrayReturned"
+			],
+			[
+				"ar",
+				"arrayReturned"
+			],
+			[
+				"O",
+				"otherArray"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "var net = require('net');\nvar CONFIG = require('./config');\nvar user = [];\n\nvar server = net.createServer (function (socket) {\n\n  var remoteAddress = socket.remoteAddress + ' PORT: ' + socket.remotePort;\n\n  console.log('Somebody connected!');\n  console.log('Connection data from: ' + remoteAddress);\n\n  // Connection Listener\n\n  server.on('error', function (error) {\n  if (error.code === 'EADDRINUSE') {\n    console.log('Adress already in use. Trying to reconnect...');\n    setTimeout (function () {\n    server.close();\n    server.listen(PORT);\n    }, 1000);\n  }\n});\n\n  socket.setEncoding('utf8');\n\n  user.push(socket);\n\n  socket.on('data', function (data) {\n    process.stdout.write(data);\n    user.forEach(function (person) {\n      person.write(data);\n    });\n  });\n\n  socket.on('end', function () {\n    console.log(remoteAddress + ' just disconnected.');\n  });\n\n  socket.on('error', function (error) {\n    console.log('Error from' + remoteAddress + error);\n  });\n\n});\n\nprocess.stdin.on('data', function (data) {\n  user.forEach(function(person) {\n    person.write('[ADMIN]: ' + data);\n  });\n});\n\nserver.listen(CONFIG.PORT, function () {\n  var PORT = server.address().port;\n  console.log('Listening on port:', PORT);\n});\n\nserver.on('close', function () {\n  server.close();\n});\n\n\n\n\n\n",
+			"file": "server.js",
+			"file_size": 1283,
+			"file_write_time": 131119373697640359,
+			"settings":
+			{
+				"buffer_size": 1283,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "var net = require('net');\nvar CONFIG = require('./config');\nvar readline = require ('readline');\n\nvar rl = readline.createInterface({\n  input: process.stdin,\n  output: process.stdout\n});\n\nvar name = ' ';\nvar socket = new net.Socket();\n\nsocket.setEncoding('utf8');\n\nusername();\n\nfunction username () {\n  rl.question(\"Yo! What's your username? \", function (answer) {\n    name += answer;\n    console.log('Welcome ' + answer + '!');\n    rl.close();\n    process.stdin.resume();\n    connect();\n  });\n}\n\nsocket.on('error', function (error) {\n  socket.destroy();\n  console.log('ERROR: connection could not be opened.');\n});\n\nfunction connect () {\n  socket.connect({ port: CONFIG.PORT}, function () {\n    console.log('Connection opened succesfully.');\n  });\n\n  process.stdin.on('data', function (data) {\n    socket.write(name + ': ' + data);\n  });\n\n  socket.on('data', function (data) {\n    process.stdout.write(data);\n  });\n\n  socket.on('end', function () {\n    console.log('Goodbye!');\n  });\n}\n",
+			"file": "client.js",
+			"file_size": 987,
+			"file_write_time": 131118233169549925,
+			"settings":
+			{
+				"buffer_size": 987,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 597,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "ins",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"gist",
+				"Gist: Insert Gist"
+			],
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"add",
+				"Project: Add Folder"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 588.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/marunoa/Users/Spekter/cohort11/Network-Broadcast-News"
+	],
+	"file_history":
+	[
+		"/home/marunoa/Users/Spekter/cohort11/Network-Broadcast-News/README.md",
+		"/home/marunoa/Users/Spekter/cohort11/Network-Broadcast-News/Network-Broadcast-News.sublime-project",
+		"/home/marunoa/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/marunoa/Users/Spekter/cohort11/Network-Broadcast-News/config.json",
+		"/home/marunoa/Users/Spekter/cohort11/Pig-Latin-Translator/package.json",
+		"/home/marunoa/Users/Spekter/cohort11/Pig-Latin-Translator/.gitignore",
+		"/home/marunoa/Users/Spekter/cohort11/Pig-Latin-Translator/js/pig-latin-translator.specs.js",
+		"/home/marunoa/Users/Spekter/cohort11/Delta-Force/lib/BasicTimer.spec.js",
+		"/home/marunoa/Users/Spekter/cohort11/Delta-Force/lib/controls.spec.js",
+		"/home/marunoa/Users/Spekter/cohort11/rebirth-of-reddit/scss/styles.scss",
+		"/home/marunoa/Users/Spekter/cohort11/rebirth-of-reddit/js/app.js",
+		"/home/marunoa/Users/Spekter/cohort11/rebirth-of-reddit/css/styles.css",
+		"/home/marunoa/Users/Spekter/cohort11/rebirth-of-reddit/.gitignore",
+		"/home/marunoa/Users/Spekter/cohort11/rebirth-of-reddit/gulpfile.js",
+		"/home/marunoa/Users/Spekter/cohort11/rebirth-of-reddit/package.json",
+		"/home/marunoa/Users/Spekter/cohort11/gee-mail/index.html",
+		"/home/marunoa/Users/Spekter/cohort11/css-selector-practice/index.html",
+		"/home/marunoa/Users/Spekter/cohort11/callbacks-notes/js/app.js",
+		"/home/marunoa/Users/Spekter/cohort11/callbacks-notes/js/event.js",
+		"/home/marunoa/Users/Spekter/cohort11/PixelPainter/test/PixelPainter.specs.js"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"socket",
+			"listen",
+			"socket",
+			", function () "
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "server.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1283,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								597,
+								597
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "client.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 987,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								978,
+								978
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "package.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 597,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "",
+	"project": "Network-Broadcast-News.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 214.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
