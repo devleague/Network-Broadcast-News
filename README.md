@@ -38,6 +38,9 @@ Whenever the connected socket (client) emits a 'data' event, then data is being 
 1. prevent users to set their name as `[ADMIN]` or any other user's name
 1. [bonus] admin can enter a command to kick a client `\kick username` and `kick ip:port` will both disconnect the client
 1. [bonus] add a rate limiter that if a client reaches the allowed 'writes per second' limet, automatically kick that user.
+1. [bonus] add private message support between two clients.
+1. [bonus] add rooms feature. A client can invite other clients to a private room.
+1. [bouns] add ability for a client to mute all messages from another.
 1. [bonus] write a client that floods another server, perhaps with a command `\flood "message"`
 
 ---
