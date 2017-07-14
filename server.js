@@ -3,13 +3,17 @@ const net = require('net');
 var clients = [];
 const server = net.createServer((socket) => {
   process.stdout.write('connected');
+  clients.push(socket);
   socket.on('close', () => {
     process.stdout.write('client disconnected');
   });
-socket.on('data', (data) => {
-  socket.write("server " + data);
-//process.stdout.write(data);
-});
+  socket.on('data', (data) => {
+    clients.forEach((client) => {
+      if(client !== socket){
+        client.write(data);
+     }
+   });
+  });
 
 
 });
