@@ -3,25 +3,6 @@ const PORT = 6969;
 let people = [];
 let person = "";
 
-function ask(question, callback) {
-    var stdin = process.stdin,
-        stdout = process.stdout;
-
-    stdin.resume();
-    stdout.write(`${question}: `);
-
-    stdin.once('data', function (data) {
-        data = data.toString().trim();
-
-        if (!data || data === '') {
-            stdout.write('Please enter some data bro... \n');
-            ask(question, callback);
-        } else {
-            callback(data);
-        }
-    });
-}
-
 const server = net.createServer((client) => {
 
     client.user = "Anon" + people.length;
@@ -41,13 +22,10 @@ const server = net.createServer((client) => {
         });
     });
 
-    client.on('error', (error) => {
-        console.log("this is the error " + error);
+    //this event occurs only after a user disconnects from the server
+    client.on('close', () => {
+        console.log(`${client.user} closed the socket`);
     });
-
-    // if (client.user === "Anon3") {
-    //     client.on('close');
-    // }
 
 });
 
