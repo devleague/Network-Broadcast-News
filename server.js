@@ -45,9 +45,9 @@ const server = net.createServer((client) => {
         console.log("this is the error " + error);
     });
 
-    if (client.user === "Anon3") {
-        client.on('close');
-    }
+    // if (client.user === "Anon3") {
+    //     client.on('close');
+    // }
 
 });
 
