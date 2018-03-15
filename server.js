@@ -27,6 +27,8 @@ const server = net.createServer((client) => {
         console.log(`${client.user} closed the socket`);
     });
 
+    
+
 });
 
 server.listen(PORT, () => {
